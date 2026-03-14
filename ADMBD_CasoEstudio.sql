@@ -82,20 +82,26 @@ CREATE TABLE Atentado (
 CREATE TABLE Atentado_aereo (
     id_atentado NUMBER NOT NULL,
     altura NUMBER(10,2),
+    id_avion NUMBER,
     CONSTRAINT pk_atentado_aereo PRIMARY KEY (id_atentado),
     CONSTRAINT fk_aa_atentado FOREIGN KEY (id_atentado)
         REFERENCES Atentado(id_atentado)
+    CONSTRAINT fk_aa_avion FOREIGN KEY (id_avion)
+        REFERENCES Avion(id_avion)
 );
 
 
 CREATE TABLE Atentado_maritimo (
     id_atentado NUMBER NOT NULL,
     id_tipo_barco NUMBER,
+    id_oceano NUMBER,
     CONSTRAINT pk_atentado_maritimo PRIMARY KEY (id_atentado),
     CONSTRAINT fk_am_atentado FOREIGN KEY (id_atentado)
         REFERENCES Atentado(id_atentado),
     CONSTRAINT fk_am_tipo_barco FOREIGN KEY (id_tipo_barco)
-        REFERENCES Tipo_barco(id_tipo_barco)
+        REFERENCES Tipo_barco(id_tipo_barco),
+    CONSTRAINT fk_am_oceano FOREIGN KEY (id_oceano)
+        REFERENCES Oceano(id_oceano)
 );
 
 
